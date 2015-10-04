@@ -1,0 +1,68 @@
+1. Instalação do Jmeter
+Alguém teve dúvidas durante a instalação?
+
+2. O que o teste de performance pode cobrir?
+
+• Validar que a aplicação está atendendo aos critérios de desempenho
+• Comparar a performance de múltiplos sistemas ou múltiplas configurações
+• Identificar gargalos de desempenho
+• Ajudar com o ajuste de desempenho do sistema
+• Ajudar a identificar os níveis de rendimento (throughput) do sistema
+• Avaliar se o sistema/aplicação está pronto para a produção, simulando as condições do ambiente real
+
+
+3. Por que fazer testes de performance?
+	Para avaliar como um sistema/aplicação sob uma determinada carga de trabalho reage em termos de:
+	- responsividade
+	- confiabilidade
+	- produtividade (throughput)
+	- interoperabilidade
+	- escalabilidade
+
+5. Atividades chave:
+
+	a. Identificar o ambiente de testes
+	b. Identificar os critérios de aceitação
+	c. Planejar os testes
+	d. Preparar o ambiente de testes
+	e. Gravar o plano de testes
+	f. Rodar os testes
+	g. Analisar os resultados
+
+
+6. Criar um plano de testes
+	
+	a. User defined variables 
+	Facilita o uso de elementos recorrentes nos nossos testes. Ex.: Site URL, user, password.
+
+	a. Thread Groups
+	Determina o número de usuários que Jmeter vai simular quando executar o plano de testes.
+
+	b. Config Elements
+	HTTP cache manager: Controla o cache do usuário no escopo do teste.
+
+	HTTP cookie manager:
+
+
+	c. Timers
+
+	d. Samplers
+
+	e. Listeners
+
+
+
+
+
+
+	################# Unknowns ##################
+	
+	- Run thread groups consecutively
+	- Run teardown thread groups after shutdown of main threads
+	- Functional test mode
+	- How to use 'Action to be taken after a Sampler error' section
+
+	sudo chown -R nmoura /Library/Tomcat
+	sudo ln -s /usr/local/apache-tomcat-8.0.27 /Library/Tomcat
+
+
