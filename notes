@@ -1,34 +1,91 @@
 1. Instalação do Jmeter
-Alguém teve dúvidas durante a instalação?
+
+	Alguém teve dúvidas durante a instalação?
 
 2. O que o teste de performance pode cobrir?
 
-• Validar que a aplicação está atendendo aos critérios de desempenho
-• Comparar a performance de múltiplos sistemas ou múltiplas configurações
-• Identificar gargalos de desempenho
-• Ajudar com o ajuste de desempenho do sistema
-• Ajudar a identificar os níveis de rendimento (throughput) do sistema
-• Avaliar se o sistema/aplicação está pronto para a produção, simulando as condições do ambiente real
-
+	• Validar que a aplicação está atendendo aos critérios de desempenho
+	• Comparar a performance de múltiplos sistemas ou múltiplas configurações
+	• Identificar gargalos de desempenho
+	• Ajudar com o ajuste de desempenho do sistema
+	• Ajudar a identificar os níveis de rendimento (throughput) do sistema
+	• Avaliar se o sistema/aplicação está pronto para a produção, simulando as condições do ambiente real
 
 3. Por que fazer testes de performance?
-	Para avaliar como um sistema/aplicação sob uma determinada carga de trabalho reage em termos de:
-	- responsividade
-	- confiabilidade
-	- produtividade (throughput)
-	- interoperabilidade
-	- escalabilidade
+   Para avaliar como um sistema/aplicação sob uma determinada carga de trabalho reage em termos de:
+	
+	• Responsividade
+	• Confiabilidade
+	• Produtividade (throughput)
+	• Interoperabilidade
+	• Escalabilidade
 
 5. Atividades chave:
 
 	a. Identificar o ambiente de testes
+		Familiarizar-se com o ambiente físico de testes e de produção é fundamental para uma execução de teste bem sucedida. sabendo coisas tais como: Quais são os hardwares, softwares e as configurações de rede do ambiente ajuda a derivar um plano de teste eficaz e identificar desafios de testes
+		desde o princípio. Na maioria dos casos, estes serão revisitados e / ou revistos durante o ciclo de teste. 
+
 	b. Identificar os critérios de aceitação
+
+		O que é um desempenho aceitável os vários módulos do sistema a ser testado? 
+		Identificar especificamente: 
+
+		• Tempo de resposta
+		• Throughput
+		• Metas de utilização de recursos
+		• Restrições
+		• Quanto tempo é aceitável que o usuário final aguarde para que uma determinada página seja renderizada?
+		• Quanto tempo é aceitável que o usuário espere para executar uma operação? 
+
+		O tempo de resposta é normalmente uma preocupação do usuário, o throughput uma preocupação das empresas e utilização de recursos é uma preocupação do sistema. Como tal, o tempo de resposta, throughpute a utilização de recursos são aspectos-chave de teste de desempenho. Os critérios de admissão são normalmente acionados pelas partes interessadas e é importante envolvê-los continuamente de acordo com a progressão dos testes à medida que os critérios forem revisados.
+
 	c. Planejar os testes
+
+		Conheçer o padrão de uso da aplicação (se houver), e chegar a cenários de uso realistas incluindo variações entre os diversos cenários. 
+
+		Por exemplo, se o aplicativo em questão tem um módulo de registro de usuários:
+		• Quantos usuários normalmente se inscrevem para uma conta em um dia? 
+		• Será que essas inscrições acontecem de uma vez , ou eles são espaçadas?
+		• Quantas pessoas freqüentam as principais páginas do aplicativo dentro de uma hora? 
+
+		Perguntas como estas ajudam a colocar as coisas em perspectiva a desenhar as variações no plano de teste. Contudo, pode haver situações em que o aplicativo em teste é novo e ainda não há padrão de uso formado. Nesses casos as partes interessadas devem ser consultadas para entender o seu processo de negócio e chegar a um plano de teste tão realista quanto seja possível.
+
 	d. Preparar o ambiente de testes
+
+		Configurar o ambiente de testes, as ferramentas e os recursos necessários para realizar os cenários planejados. É importante garantir que o ambiente de teste seja instrumentado para monitoramento de recursos para ajudar a analisar os resultados de forma mais eficiente. Dependendo da empresa, uma equipe separada pode ser responsável pela configuração das ferramentas de teste, enquanto outra pode ser responsável por configurar outros aspectos tais como monitoramento de recursos.
+
 	e. Gravar o plano de testes
+		Aqui é onde finalmente entra a ferramenta :)
+		No nosso caso vamos usar o JMeter, mas existem várias outras dentre pagas e gratuitas. O importante é avaliar quais os prós e contras para cada contexto.
+
 	f. Rodar os testes
+
+		• Uma vez gravados, executar os planos de teste sob carga leve e verificar a exatidão dos scripts de teste e seus resultados. 
+		• Em casos onde os scripts são alimentados com uma massa de dados externa para obter dados mais realistas, validar os dados de teste. 
+		• Outro aspecto que exige atenção durante a execução do plano de teste é o servidor de logs. Este
+		pode ser alcançado por meio dos agentes de monitoramento de recursos criado para monitorar
+		os servidores. 
+		• Também é fundamental prestar atenção para avisos e erros. A alta taxa de erros, por exemplo, poderia ser um indicativo de que algo está errado com o script, aplicativo em teste , recurso do sistema, ou uma combinação destes.
+
 	g. Analisar os resultados
 
+		Examine os resultados de cada execução sucessiva e identificar áreas de gargalo que precisem ser abordadas.
+		Que podem ser, por exemplo: sistema, banco de dados ou aplicativo relacionado. 
+
+		Gargalos relacionados com o sistema pode levar a mudanças de infra-estrutura, tais como aumentar a memória disponível para a aplicação, reduzindo o consumo de CPU, aumentando ou diminuindo threads, revisando tamanhos de conjunto de banco de dados e reconfigurar as configurações de rede.
+
+		Gargalos relacionados com o banco de dados podem levar a análise de banco de dados e revisão das operações I/O. Elencagem das top queries da aplicação, perfilamento de consultas SQL, introduzindo
+		índices adicionais, recolha de estatísticas de execução, mudança do tamanhos das página de tabela
+		e locks, dentre outros. 
+
+		Finalmente, as alterações relacionadas com a aplicação podem levar a atividades tais como rafatoração de componentes da aplicação, redução do consumo de memória da aplicação, e round trip de banco de dados. 
+
+		Uma vez identificados os gargalos são endereçados. Após os ajustes os testes devem ser re-executados e comparados com os resultados anteriores. Para ajudar a rastrear melhor qual foi a mudança que (ou grupo de mudanças) que resolveu um gargalo em particular, é vital que as alterações sejam aplicadas de forma ordenada, de preferência uma de cada vez. 
+
+		Em outras palavras, uma vez que uma mudança é aplicada, o mesmo plano de teste é executado e os resultados comparados com uma execução anterior para ver se a alteração feita teve qualquer melhora ou piora no resultado. 
+
+		Esse processo se repete até que os objetivos de desempenho do projeto sejam cumpridos.
 
 6. Criar um plano de testes
 	
@@ -40,7 +97,6 @@ Alguém teve dúvidas durante a instalação?
 
 	b. Config Elements
 	HTTP cache manager: Controla o cache do usuário no escopo do teste.
-
 	HTTP cookie manager:
 
 
@@ -54,15 +110,13 @@ Alguém teve dúvidas durante a instalação?
 
 
 
-
-	################# Unknowns ##################
+_______________________________________________________________________________
 	
-	- Run thread groups consecutively
+	Dúvidas:
+	
 	- Run teardown thread groups after shutdown of main threads
 	- Functional test mode
 	- How to use 'Action to be taken after a Sampler error' section
 
-	sudo chown -R nmoura /Library/Tomcat
-	sudo ln -s /usr/local/apache-tomcat-8.0.27 /Library/Tomcat
 
 
